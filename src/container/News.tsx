@@ -1,5 +1,6 @@
 import useGetNews from "../hooks/useGetNews.ts";
 import ItemNews from "../components/ItemNews.tsx";
+import {FadeLoader} from "react-spinners";
 
 const News = () => {
     const {news, loading, error} = useGetNews();
@@ -14,9 +15,10 @@ const News = () => {
 
                     {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
-
                     {loading ? (
-                         <div className="text-gray-500 text-center mb4">Loading...</div>
+                         <div className="flex flex-col items-center justify-center">
+                             <FadeLoader color={"#2563EB"} loading={loading} />
+                         </div>
                     ): (
                         <div className="container">
                             {news.map((n, index) => (
@@ -26,7 +28,6 @@ const News = () => {
                     )}
                 </div>
             </section>
-
         </div>
     );
 }
