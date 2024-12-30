@@ -1,0 +1,38 @@
+.MenuMobile {
+  background-color: blueviolet;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  transition: 1s ease;
+  animation: moveRight 1s ease forwards;
+  z-index: 1;
+}
+
+.menu-mobile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-mobile-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-mobile-container a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
