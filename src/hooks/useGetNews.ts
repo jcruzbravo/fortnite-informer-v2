@@ -10,7 +10,7 @@ const useGetNews = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const response = await axios.get(endpoints.news,
+                const response = await axios.get(endpoints.NEWS,
                     {
                         headers: {
                             'Authorization': import.meta.env.VITE_FORTNITE_API_KEY,
