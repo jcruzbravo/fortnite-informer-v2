@@ -60,7 +60,7 @@ const Shop = () => {
                                         item.displayAssets.map((asset: any, index: number) => (
                                             <div key={index} className="hover:shadow-lg items-center shadow-lg overflow-hidden transition duration-700 ease-in-out">
                                                 <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                                                    <img className="object-contain rounded-t-lg h-56 md:h-64 lg:h-80 xl:h-96" src={asset.full_background ?? asset.url} alt={item.mainId}/>
+                                                    <img loading="lazy" className="object-contain rounded-t-lg h-56 md:h-64 lg:h-80 xl:h-96" src={asset.full_background ?? asset.url} alt={item.mainId}/>
                                                     <div className="flex flex-col gap-2 justify-evenly p-4 leading-normal">
                                                         <h5 className="mb-2 text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                                             {item.displayName} - {item.displayType} - {item.mainType}
