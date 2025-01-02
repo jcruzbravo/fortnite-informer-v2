@@ -4,7 +4,6 @@ import Home from "./container/Home";
 import Layout from "./container/Layout.tsx";
 import News from "./container/News.tsx";
 import Shop from "./container/Shop.tsx";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
 
@@ -17,8 +16,6 @@ function App() {
                   <Route path="/shop" element={<Shop />} />
               </Route>
           </Routes>
-
-          <SpeedInsights/>
       </Router>
   )
 }
