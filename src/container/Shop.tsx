@@ -53,31 +53,53 @@ const Shop = () => {
                 )
                 : (
                         <>
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                                 {shop
                                     .slice((page - 1) * byPage, (page - 1) * byPage + byPage)
                                     .map((item: any) => (
                                         item.displayAssets.map((asset: any, index: number) => (
                                             <div key={index} className="hover:shadow-lg items-center shadow-lg overflow-hidden transition duration-700 ease-in-out">
                                                 <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
-                                                    <img className="object-contain rounded-t-lg h-96 md:rounded-none md:rounded-s-lg" src={asset.full_background ?? asset.url} alt={item.mainId}/>
-                                                    <div className="flex flex-col justify-between p-4 leading-normal">
-                                                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                                            {item.displayName}
+                                                    <img className="object-contain rounded-t-lg h-56 md:h-64 lg:h-80 xl:h-96" src={asset.full_background ?? asset.url} alt={item.mainId}/>
+                                                    <div className="flex flex-col gap-2 justify-evenly p-4 leading-normal">
+                                                        <h5 className="mb-2 text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                            {item.displayName} - {item.displayType} - {item.mainType}
                                                         </h5>
-                                                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                                        <p className="mb-3 text-sm sm:text-base font-normal text-gray-700 dark:text-gray-400">
                                                             {item.devName}
                                                         </p>
+                                                        <p style={{color: item.colors.textBackgroundColor}} className="text-sm font-bold sm:text-base p-1 rounded-md">
+                                                            Offer dates: {new Date(item.offerDates.in).toLocaleDateString()} - {new Date(item.offerDates.out).toLocaleDateString()}
+                                                        </p>
                                                         <p>
-                                                            {item.rarity.name}
+                                                            <span
+                                                                className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                                                {item.giftAllowed ? "Gift" : "No Gift"}
+                                                            </span>
+
+                                                            <span
+                                                                className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                                                {item.buyAllowed ? "Buy" : "No Buy"}
+                                                            </span>
+
+                                                            <span
+                                                                className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                                                {item.rarity.name}
+                                                            </span>
+
+                                                            {item.banner && (
+                                                                <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                                                                    {item.banner.name}
+                                                                </span>
+                                                            )}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        ))))}
+                                    ))))}
                             </div>
                             <div className="mt-8">
-                                <Paginator page={page} setPage={handlePageChange} maximum={maximum}/>
+                            <Paginator page={page} setPage={handlePageChange} maximum={maximum}/>
                             </div>
                         </>
                     )}
