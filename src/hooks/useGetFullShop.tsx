@@ -6,6 +6,7 @@ const useGetFullShop = () => {
     const [shop, setShop] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [lastUpdate, setLastUpdate] = useState("");
 
     useEffect(() => {
         const loadData = async () => {
@@ -20,6 +21,7 @@ const useGetFullShop = () => {
                 );
                 const data = response.data;
                 const shop = data.shop;
+                setLastUpdate(data.lastUpdate.date);
                 setShop(shop);
                 setLoading(false);
             } catch (error) {
@@ -30,7 +32,7 @@ const useGetFullShop = () => {
         loadData();
     }, []);
 
-    return { shop, loading, error };
+    return { shop, loading, error, lastUpdate };
 };
 
 export default useGetFullShop;

@@ -2,35 +2,61 @@ import {FadeLoader} from "react-spinners";
 import {Suspense, useState} from "react";
 import useGetFullShop from "../hooks/useGetFullShop.tsx";
 import Paginator from "../components/Paginator.tsx";
-import vbuckIcon from "../assets/images/vbuck.webp";
-import {FaArrowRight, FaArrowLeft} from "react-icons/fa";
+import Countdown from "react-countdown";
 
 const Shop = () => {
-    const { shop, loading, error } = useGetFullShop();
+    const { shop, loading, error, lastUpdate } = useGetFullShop();
     const [page, setPage] = useState(1);
-    const [byPage, setbyPage] = useState(6);
+    const [byPage] = useState(10);
+    const [isPageLoading, setIsPageLoading] = useState(false);
     const maximum = Math.ceil(shop.length / byPage);
+    const nextUpdate = new Date(lastUpdate).getTime() + 24 * 60 * 60 * 1000;
+
+    const handlePageChange = (newPage: number) => {
+        setIsPageLoading(true);
+        setTimeout(() => {
+            setPage(newPage);
+            setIsPageLoading(false);
+        }, 500);
+    };
+
 
     return (
         <Suspense fallback={<FadeLoader/>}>
             <section className="container mx-auto px-4 py-6">
-                <h1 className="text-3xl font-bold dark:text-white mb-6 text-center">
-                    Item Shop
-                </h1>
+                <div className="flex justify-between">
+                    <h1 className="text-3xl font-bold dark:text-white mb-6 text-center">
+                        Item Shop
+                    </h1>
+
+                    {lastUpdate && (
+                        <div>
+                            <p>Next update in:</p>
+                            <Countdown
+                                date={nextUpdate}
+                                renderer={({ hours, minutes, seconds }) => (
+                                    <span>
+                                    {hours}h {minutes}m {seconds}s
+                                </span>
+                                )}
+                            />
+                        </div>
+                    )}
+                </div>
 
                 {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
-                {loading ? (
+                {loading || isPageLoading ? (
                     <div className="flex flex-col items-center justify-center">
-                        <FadeLoader color={"#2563EB"} loading={loading}/>
+                        <FadeLoader color={"#2563EB"} loading={loading || isPageLoading}/>
                     </div>
                 )
                 : (
                         <>
-                            <div className="grid grid-cols-1 gap-6">
+                            <div className="grid grid-cols-2 gap-3">
                                 {shop
                                     .slice((page - 1) * byPage, (page - 1) * byPage + byPage)
-                                    .map((item: any, index: number) => (
+                                    .map((item: any) => (
                                         item.displayAssets.map((asset: any, index: number) => (
                                             <div key={index} className="hover:shadow-lg items-center shadow-lg overflow-hidden transition duration-700 ease-in-out">
                                                 <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
@@ -42,13 +68,16 @@ const Shop = () => {
                                                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                                             {item.devName}
                                                         </p>
+                                                        <p>
+                                                            {item.rarity.name}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         ))))}
                             </div>
                             <div className="mt-8">
-                                <Paginator page={page} setPage={setPage} maximum={maximum}/>
+                                <Paginator page={page} setPage={handlePageChange} maximum={maximum}/>
                             </div>
                         </>
                     )}
