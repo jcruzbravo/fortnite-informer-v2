@@ -9,7 +9,7 @@ const News = () => {
         <section>
             <div className="container mx-auto px-4 py-6">
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-6 text-center">
-                    Battle Royale News
+                    Noticias
                 </h1>
 
                 {error && <div className="text-red-500 text-center mb-4">{error}</div>}

@@ -1,6 +1,6 @@
 import {FadeLoader} from "react-spinners";
 import {Suspense, useState} from "react";
-import useGetFullShop from "../hooks/useGetFullShop.tsx";
+import useGetFullShop from "../hooks/useGetFullShop.ts";
 import Paginator from "../components/Paginator.tsx";
 import Countdown from "react-countdown";
 
@@ -26,7 +26,7 @@ const Shop = () => {
             <section className="container mx-auto px-4 py-6">
                 <div className="flex justify-between">
                     <h1 className="text-3xl font-bold dark:text-white mb-6 text-center">
-                        Item Shop
+                        Tienda de objetos
                     </h1>
 
                     {lastUpdate && (
@@ -53,7 +53,7 @@ const Shop = () => {
                 )
                 : (
                         <>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            <div className="grid grid-cols-1 gap-4">
                                 {shop
                                     .slice((page - 1) * byPage, (page - 1) * byPage + byPage)
                                     .map((item: any) => (

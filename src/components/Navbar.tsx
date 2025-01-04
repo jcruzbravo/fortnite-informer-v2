@@ -22,19 +22,29 @@ const Header = () => {
             </Link>
             <ul>
                 <li>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/">
+                        Inicio
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/news">News</NavLink>
+                    <NavLink to="/news">
+                        Noticias
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/shop">Shop</NavLink>
+                    <NavLink to="/shop">
+                        Tienda de objetos
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/challenges">Challenges</NavLink>
+                    <NavLink to="/challenges">
+                        Desafíos
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/search-account">Search Account</NavLink>
+                    <NavLink to="/search-account">
+                        Buscar cuenta
+                    </NavLink>
                 </li>
             </ul>
         </nav>

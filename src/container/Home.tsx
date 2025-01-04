@@ -5,13 +5,13 @@ const Home = () => {
         <div className="Home">
             <section className="hero">
                 <div className="hero-content">
-                    <h2 className="hero-title">What's Fortnite?</h2>
+                    <h2 className="hero-title">¿Qué es Fortnite?</h2>
                     <p className="hero-description">
-                        Fortnite is a world full of experiences. Enter the island and
-                        compete to be the last player (or team) standing. Create an island
-                        with your own rules. Spend time with your friends on an island
-                        created by someone else. Or save the world by wiping out hordes of
-                        monsters with other players.
+                        Fortnite es un mundo lleno de experiencias.
+                        Entra en la isla y compite para ser el último jugador (o equipo) en pie.
+                        Crea una isla con tus propias reglas.
+                        Pasa tiempo con tus amigos en una isla creada por otra persona.
+                        O salva el mundo acabando con hordas de monstruos con otros jugadores.
                     </p>
                 </div>
             </section>
