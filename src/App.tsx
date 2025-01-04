@@ -4,6 +4,8 @@ import Home from "./container/Home";
 import Layout from "./container/Layout.tsx";
 import News from "./container/News.tsx";
 import Shop from "./container/Shop.tsx";
+import Challenge from "./container/Challenge.tsx";
+import SearchAccount from "./container/SearchAccount.tsx";
 
 function App() {
 
@@ -14,6 +16,8 @@ function App() {
                   <Route path="/" index element={<Home />} />
                   <Route path="/news" element={<News />} />
                   <Route path="/shop" element={<Shop />} />
+                  <Route path="/challenges" element={<Challenge />} />
+                  <Route path="/search-account" element={<SearchAccount />} />
               </Route>
           </Routes>
       </Router>
