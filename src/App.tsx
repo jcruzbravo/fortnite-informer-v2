@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router'
 import './App.css'
-import Home from "./container/Home";
+import Home from "./container/Home.tsx";
 import Layout from "./container/Layout.tsx";
 import News from "./container/News.tsx";
 import Shop from "./container/Shop.tsx";

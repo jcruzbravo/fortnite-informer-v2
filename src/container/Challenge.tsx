@@ -30,13 +30,13 @@ const Challenge = () => {
                         return (
                             <div
                                 key={challenge.id}
-                                className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-6"
+                                className="w-full border rounded-lg shadow bg-gray-800 border border-gray-700 mb-6"
                             >
                                 <ul className="flex text-sm font-medium text-center text-gray-500" role="tablist">
-                                    <li className="me-2 hover:bg-gray-50">
+                                    <li className="me-2 hover:bg-gray-700 rounded-none">
                                         <button
                                             type="button"
-                                            className={`inline-block p-4 rounded-t-lg ${
+                                            className={`inline-block p-4 ${
                                                 activeTab === "description"
                                                     ? "text-blue-600 border-b-2 border-blue-600"
                                                     : "hover:text-gray-600"
@@ -46,10 +46,10 @@ const Challenge = () => {
                                             Información general
                                         </button>
                                     </li>
-                                    <li className="me-2 hover:bg-gray-50">
+                                    <li className="me-2 hover:bg-gray-700 rounded-none">
                                         <button
                                             type="button"
-                                            className={`inline-block p-4 rounded-t-lg ${
+                                            className={`inline-block p-4 ${
                                                 activeTab === "quests"
                                                     ? "text-blue-600 border-b-2 border-blue-600"
                                                     : "hover:text-gray-600"
@@ -62,21 +62,21 @@ const Challenge = () => {
                                 </ul>
                                 <div className="p-4">
                                     {activeTab === "description" && (
-                                        <div className="p-4 bg-white rounded-lg md:p-8 ">
-                                            <h2 className="flex gap-2 mb-3 text-3xl font-extrabold tracking-tight text-gray-900">
+                                        <div className="p-4 rounded-lg md:p-8 ">
+                                            <h2 className="flex gap-2 mb-3 text-3xl font-extrabold tracking-tight text-blue-600">
                                                 <FaHammer /> [{challenge.name != '' ? challenge.name : "No Name"}]
                                             </h2>
                                             <p className="mb-3 text-gray-500">{challenge.unlockType}</p>
                                         </div>
                                     )}
                                     {activeTab === "quests" && (
-                                        <div className="p-4 bg-white rounded-lg md:p-8">
-                                            <h2 className="mb-5 text-2xl font-extrabold tracking-tight text-gray-900">
+                                        <div className="p-4 rounded-lg md:p-8">
+                                            <h2 className="mb-5 text-2xl font-extrabold tracking-tight text-blue-600">
                                                 Desafíos
                                             </h2>
                                             <ul role="list" className="space-y-4 text-gray-500 flex flex-col">
                                                 {challenge.quests.map((quest: any, index: number) => (
-                                                    <li key={quest.id} className="border-b py-2 hover:bg-gray-50 cursor-default">
+                                                    <li key={quest.id} className="border-b py-2 hover:bg-gray-700 cursor-default">
                                                         <p>
                                                             <strong>Desafío #</strong>{index}
                                                         </p>

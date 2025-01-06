@@ -39,12 +39,12 @@ const Paginator = ({ page, setPage, maximum }) => {
     };
 
     return (
-        <div className="flex justify-center gap-4 items-center">
+        <div className="flex justify-center gap-4 items-center text-white">
             <button disabled={page <= 1} onClick={previousPage}>
                 <GrPrevious />
             </button>
             <input
-                className="text-center"
+                className="text-center bg-gray-800 border border-gray-700 rounded-lg w-16"
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 name="page"

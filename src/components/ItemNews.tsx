@@ -12,12 +12,13 @@ interface News {
 
 const ItemNews: React.FC<{ news: News }> = ({ news }) => {
     const isLoading = useLoadingTimeout(4000);
-
-    if (isLoading) {
+    if (!isLoading) {
         return (
-            <div className="w-full flex flex-col md:flex-row gap-4 bg-white border border-gray-200 rounded-lg shadow mt-2 mb-2 p-4">
+            <div className="w-full flex flex-col md:flex-row gap-4 bg-gray-800 border border-gray-700 rounded-lg shadow mt-2 mb-2 p-4">
                 <div className="w-full md:w-1/3 rounded-lg overflow-hidden">
                     <Skeleton
+                        baseColor={"#4B5563"}
+                        highlightColor={"#1f2937"}
                         count={1}
                         height={256}
                         style={{ width: "100%" }}
@@ -26,6 +27,8 @@ const ItemNews: React.FC<{ news: News }> = ({ news }) => {
                 <div className="flex flex-col flex-grow mt-4">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight">
                         <Skeleton
+                            baseColor={"#4B5563"}
+                            highlightColor={"#1f2937"}
                             count={3}
                             height={50}
                             style={{ width: "100%" }}
@@ -36,7 +39,7 @@ const ItemNews: React.FC<{ news: News }> = ({ news }) => {
         );
     } else {
         return (
-            <div className="w-full flex flex-col items-center md:flex-row gap-4 mt-2 mb-2 bg-white border border-gray-200 rounded-lg shadow-md p-4">
+            <div className="w-full flex flex-col items-center md:flex-row gap-4 mt-2 mb-2 bg-gray-800 border border-gray-700 rounded-lg shadow-md p-4">
                 <div className="rounded-lg overflow-hidden">
                     <img
                         src={news.image}

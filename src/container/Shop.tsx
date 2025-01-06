@@ -24,18 +24,18 @@ const Shop = () => {
     return (
         <Suspense fallback={<FadeLoader/>}>
             <section className="container mx-auto px-4 py-6">
-                <div className="flex justify-between">
-                    <h1 className="text-3xl font-bold dark:text-white mb-6 text-center">
+                <div className="flex items-center justify-between">
+                    <h1 className="text-3xl font-bold dark:text-white mb-6">
                         Tienda de objetos
                     </h1>
 
                     {lastUpdate && (
                         <div>
-                            <p>Next update in:</p>
+                            <p className="text-blue-600 font-bold">Next update in:</p>
                             <Countdown
                                 date={nextUpdate}
                                 renderer={({ hours, minutes, seconds }) => (
-                                    <span>
+                                    <span className="text-blue-600 font-bold">
                                     {hours}h {minutes}m {seconds}s
                                 </span>
                                 )}
@@ -59,7 +59,7 @@ const Shop = () => {
                                     .map((item: any) => (
                                         item.displayAssets.map((asset: any, index: number) => (
                                             <div key={index} className="hover:shadow-lg items-center shadow-lg overflow-hidden transition duration-700 ease-in-out">
-                                                <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row">
+                                                <div className="flex flex-col items-center bg-gray-800 border border-gray-700 rounded-lg shadow md:flex-row">
                                                     <img loading="lazy" className="object-contain rounded-t-lg h-56 md:h-64 lg:h-80 xl:h-96" src={asset.full_background ?? asset.url} alt={item.mainId}/>
                                                     <div className="flex flex-col gap-2 justify-evenly p-4 leading-normal">
                                                         <h5 className="mb-2 text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -99,7 +99,7 @@ const Shop = () => {
                                     ))))}
                             </div>
                             <div className="mt-8">
-                            <Paginator page={page} setPage={handlePageChange} maximum={maximum}/>
+                                <Paginator page={page} setPage={handlePageChange} maximum={maximum}/>
                             </div>
                         </>
                     )}
