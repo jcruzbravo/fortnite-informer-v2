@@ -3,7 +3,7 @@ import ItemNews from "../components/ItemNews.tsx";
 import {FadeLoader} from "react-spinners";
 
 const News = () => {
-    const {news, loading, error} = useGetNews();
+    const { news, loading, error } = useGetNews();
 
     return (
         <section>
