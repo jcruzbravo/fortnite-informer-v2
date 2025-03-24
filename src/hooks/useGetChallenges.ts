@@ -18,10 +18,19 @@ const useGetChallenges = () => {
                         },
                     }
                 );
+
+                if (response.data.bundles.length === 0) {
+                    setError("No challenges found.");
+                    setLoading(false);
+                    
+                    return;
+                }
+
                 const data = response.data.bundles[0].bundles;
                 setChallenges(data);
                 setLoading(false)
             } catch (error) {
+                console.log('Error:', error);
                 setError("Something went wrong. Please try again later.");
                 setLoading(false);
             }
