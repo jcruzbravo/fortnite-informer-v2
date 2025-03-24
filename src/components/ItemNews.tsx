@@ -12,7 +12,8 @@ interface News {
 
 const ItemNews: React.FC<{ news: News }> = ({ news }) => {
     const isLoading = useLoadingTimeout(4000);
-    if (!isLoading) {
+
+    if (isLoading) {
         return (
             <div className="w-full flex flex-col md:flex-row gap-4 bg-gray-800 border border-gray-700 rounded-lg shadow mt-2 mb-2 p-4">
                 <div className="w-full md:w-1/3 rounded-lg overflow-hidden">
